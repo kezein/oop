@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact — Kezia Lorein Villegas</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">KLV<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="midterm.html">Midterm</a></li>
+    <li><a href="final.html">Final</a></li>
+    <li><a href="contact.html" class="active nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-content">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> › <span>Contact</span>
+    </div>
+    <div class="hero-tag">Get in Touch</div>
+    <h1 class="hero-title">Contact Me</h1>
+    <p class="hero-sub">
+      For questions about this portfolio, academic collaboration, or just to say hello.
+    </p>
+  </div>
+</div>
+
+<!-- CONTACT SECTION -->
+<section>
+  <div class="section-inner">
+    <div class="contact-grid">
+
+      <!-- Left: Info -->
+      <div>
+        <div class="section-label">My Info</div>
+        <h2 class="section-title" style="margin-bottom: 1.5rem;">Let's connect.</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.75; margin-bottom: 2rem; font-weight: 300;">
+          I'm a BS Information Technology student at PUP. Feel free to reach out for questions
+          about this portfolio or my OOP coursework.
+        </p>
+
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-item-icon">👤</div>
+            <div class="contact-item-text">
+              <div class="label">Full Name</div>
+              <div class="value">Kezia Lorein Villegas</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🏫</div>
+            <div class="contact-item-text">
+              <div class="label">School</div>
+              <div class="value">Polytechnic University of the Philippines</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📚</div>
+            <div class="contact-item-text">
+              <div class="label">Course</div>
+              <div class="value">BS Information Technology</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📧</div>
+            <div class="contact-item-text">
+              <div class="label">Email</div>
+              <div class="value">[ your email here ]</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🔗</div>
+            <div class="contact-item-text">
+              <div class="label">GitHub</div>
+              <div class="value">[ your GitHub link here ]</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Form -->
+      <div>
+        <div class="section-label">Send a Message</div>
+        <h2 class="section-title" style="margin-bottom: 1.5rem; font-size: 1.5rem;">Drop me a note.</h2>
+        <div class="contact-form">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" placeholder="e.g. Juan dela Cruz"/>
+          </div>
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" placeholder="e.g. juan@email.com"/>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" placeholder="e.g. About your OOP portfolio"/>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" rows="5" placeholder="Write your message here..."></textarea>
+          </div>
+          <button class="btn btn-primary" onclick="handleSubmit()" style="align-self: flex-start;">
+            Send Message ↗
+          </button>
+          <p id="form-msg" style="font-size: 0.85rem; color: var(--purple); display: none; margin-top: 0.25rem;">
+            ✓ Thanks! Your message was sent. (Note: wire up a backend or use Formspree for real submissions.)
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="band">
+  <div class="section-inner" style="text-align: center;">
+    <div class="section-label" style="justify-content: center;">Portfolio</div>
+    <h2 class="section-title">Explore the rest of the portfolio</h2>
+    <p class="section-desc" style="margin: 0 auto 2rem;">
+      Check out my Midterm outputs — Java programs, quizzes, and reflections.
+    </p>
+    <a href="midterm.html" class="btn btn-yellow">View Midterm Work →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Designed & built by <strong>Kezia Lorein Villegas</strong> · OOP E-Portfolio · PUP · 2025</p>
+</footer>
+
+<script>
+function handleSubmit() {
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('message').value;
+  const msg = document.getElementById('form-msg');
+  if (name && email && message) {
+    msg.style.display = 'block';
+  } else {
+    msg.style.display = 'block';
+    msg.style.color = '#E24B4A';
+    msg.textContent = '⚠ Please fill in all required fields.';
+  }
+}
+</script>
+
+</body>
+</html>

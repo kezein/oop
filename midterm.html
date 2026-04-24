@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Midterm — Kezia Lorein Villegas</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">KLV<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="midterm.html" class="active">Midterm</a></li>
+    <li><a href="final.html">Final</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-content">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> › <span>Midterm</span>
+    </div>
+    <div class="hero-tag">Midterm Outputs</div>
+    <h1 class="hero-title">Midterm Work</h1>
+    <p class="hero-sub">
+      Quizzes, seatwork, Java activities, and exam outputs — all with explanations and honest reflections.
+    </p>
+  </div>
+</div>
+
+<!-- QUIZZES -->
+<section>
+  <div class="section-inner">
+    <div class="section-label">Midterm Quizzes</div>
+    <h2 class="section-title">Quiz Coverage</h2>
+    <p class="section-desc">Key questions from midterm quizzes with answers and concept explanations.</p>
+
+    <div class="accordion open">
+      <button class="accordion-header" onclick="toggleAccordion(this)">
+        Quiz 1 — Introduction to OOP & Java Basics
+        <div class="accordion-arrow">▾</div>
+      </button>
+      <div class="accordion-body">
+        <p style="margin-bottom: 0.75rem;"><strong>Q1. What does OOP stand for, and what are its four main principles?</strong></p>
+        <p style="margin-bottom: 1rem;">OOP stands for <em>Object-Oriented Programming</em>. Its four pillars are: <strong>Encapsulation</strong> (bundling data and methods), <strong>Inheritance</strong> (child class inheriting from parent), <strong>Polymorphism</strong> (same method, different behaviors), and <strong>Abstraction</strong> (hiding complexity).</p>
+        <p style="margin-bottom: 0.75rem;"><strong>Q2. What is the difference between a class and an object?</strong></p>
+        <p>A <strong>class</strong> is a blueprint or template. An <strong>object</strong> is an actual instance created from that blueprint. E.g., <code>Car</code> is a class; <code>myCar</code> is an object.</p>
+        <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--purple); font-weight: 500;">[ Add more quiz questions here ]</p>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-header" onclick="toggleAccordion(this)">
+        Quiz 2 — Classes, Objects & Constructors
+        <div class="accordion-arrow">▾</div>
+      </button>
+      <div class="accordion-body">
+        <p>[ Add your Quiz 2 questions, answers, and explanations here ]</p>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-header" onclick="toggleAccordion(this)">
+        Quiz 3 — Methods & Decision Structures
+        <div class="accordion-arrow">▾</div>
+      </button>
+      <div class="accordion-body">
+        <p>[ Add your Quiz 3 questions, answers, and explanations here ]</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEATWORK -->
+<section style="background: var(--white); padding-top: 4rem; padding-bottom: 4rem;">
+  <div class="section-inner">
+    <div class="section-label">Midterm Seatwork</div>
+    <h2 class="section-title">Seatwork Outputs</h2>
+    <p class="section-desc">In-class exercises with questions, answers, and brief explanations.</p>
+
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">✏️</div>
+        <h3>Seatwork 1</h3>
+        <p>[ Describe the task — e.g., "Write a Java class with encapsulation using private fields and getters/setters." ]</p>
+        <div class="divider"></div>
+        <div class="placeholder-img" style="min-height: 120px;">
+          <div class="icon">🖼</div>
+          <div style="font-size: 0.78rem;">Add screenshot of your output</div>
+        </div>
+        <span class="card-tag">Java</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">✏️</div>
+        <h3>Seatwork 2</h3>
+        <p>[ Describe the task here ]</p>
+        <div class="divider"></div>
+        <div class="placeholder-img" style="min-height: 120px;">
+          <div class="icon">🖼</div>
+          <div style="font-size: 0.78rem;">Add screenshot of your output</div>
+        </div>
+        <span class="card-tag">Java</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">✏️</div>
+        <h3>Seatwork 3</h3>
+        <p>[ Describe the task here ]</p>
+        <div class="divider"></div>
+        <div class="placeholder-img" style="min-height: 120px;">
+          <div class="icon">🖼</div>
+          <div style="font-size: 0.78rem;">Add screenshot of your output</div>
+        </div>
+        <span class="card-tag">Java</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVITIES -->
+<section>
+  <div class="section-inner">
+    <div class="section-label">Midterm Activities</div>
+    <h2 class="section-title">Java Programming Activities</h2>
+    <p class="section-desc">Hands-on Java programs with code, screenshots, and what I learned.</p>
+
+    <!-- ATM Activity -->
+    <div style="margin-bottom: 3rem;">
+      <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+        <span class="badge badge-purple">Activity 1</span>
+        <h3 style="font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--dark);">ATM Simulation Program</h3>
+      </div>
+      <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.75; margin-bottom: 1.25rem; font-weight: 300;">
+        Built a Java ATM simulation that demonstrates encapsulation — user balance is stored as a
+        private field and only accessed through methods like <code>deposit()</code>, <code>withdraw()</code>,
+        and <code>checkBalance()</code>. The program uses conditional logic to validate transactions.
+      </p>
+
+      <div class="code-block">
+<span class="cm">// ATM Simulation — Kezia Lorein Villegas</span>
+<span class="kw">public class</span> <span class="cls">ATM</span> {
+    <span class="kw">private double</span> balance;
+
+    <span class="kw">public</span> <span class="cls">ATM</span>(<span class="kw">double</span> initialBalance) {
+        <span class="kw">this</span>.balance = initialBalance;
+    }
+
+    <span class="kw">public void</span> deposit(<span class="kw">double</span> amount) {
+        <span class="kw">if</span> (amount > <span class="num">0</span>) {
+            balance += amount;
+            System.out.println(<span class="str">"Deposited: ₱"</span> + amount);
+        }
+    }
+
+    <span class="kw">public void</span> withdraw(<span class="kw">double</span> amount) {
+        <span class="kw">if</span> (amount <= balance) {
+            balance -= amount;
+            System.out.println(<span class="str">"Withdrawn: ₱"</span> + amount);
+        } <span class="kw">else</span> {
+            System.out.println(<span class="str">"Insufficient funds."</span>);
+        }
+    }
+
+    <span class="kw">public void</span> checkBalance() {
+        System.out.println(<span class="str">"Balance: ₱"</span> + balance);
+    }
+}
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
+        <div class="placeholder-img">
+          <div class="icon">🖼</div>
+          <div>Screenshot: Code in IDE</div>
+          <div style="font-size: 0.75rem; opacity: 0.6;">Replace with your actual screenshot</div>
+        </div>
+        <div class="placeholder-img">
+          <div class="icon">🖥</div>
+          <div>Screenshot: Program Output</div>
+          <div style="font-size: 0.75rem; opacity: 0.6;">Replace with your actual screenshot</div>
+        </div>
+      </div>
+
+      <div class="reflection">
+        <p>"Building the ATM program taught me how encapsulation works in a real-world scenario.
+        Making the <code>balance</code> field private forced me to think about how data should only
+        be accessed through controlled methods — not directly. This felt like a lightbulb moment
+        for understanding why OOP design matters."</p>
+        <div class="reflection-author">— Kezia Lorein Villegas</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Decision Structures -->
+    <div style="margin-top: 2.5rem; margin-bottom: 3rem;">
+      <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+        <span class="badge badge-yellow">Activity 2</span>
+        <h3 style="font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--dark);">Decision Structures</h3>
+      </div>
+      <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.75; margin-bottom: 1.25rem; font-weight: 300;">
+        [ Describe your decision structures activity here — what problem did you solve, what logic did you use? ]
+      </p>
+      <div class="code-block">
+<span class="cm">// Replace with your actual code</span>
+<span class="kw">public class</span> <span class="cls">DecisionStructures</span> {
+    <span class="kw">public static void</span> main(String[] args) {
+        <span class="cm">// Your code here</span>
+    }
+}
+      </div>
+      <div class="placeholder-img">
+        <div class="icon">🖼</div>
+        <div>Add output screenshot</div>
+      </div>
+      <div class="reflection">
+        <p>"[ Write your reflection on this activity here. What did you learn? What was difficult? ]"</p>
+        <div class="reflection-author">— Kezia Lorein Villegas</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Methods -->
+    <div style="margin-top: 2.5rem;">
+      <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+        <span class="badge badge-purple">Activity 3</span>
+        <h3 style="font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--dark);">Methods in Java</h3>
+      </div>
+      <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.75; margin-bottom: 1.25rem; font-weight: 300;">
+        [ Describe your methods activity here ]
+      </p>
+      <div class="code-block">
+<span class="cm">// Replace with your actual code</span>
+<span class="kw">public class</span> <span class="cls">MethodsDemo</span> {
+    <span class="kw">public static void</span> main(String[] args) {
+        <span class="cm">// Your code here</span>
+    }
+}
+      </div>
+      <div class="reflection">
+        <p>"[ Your reflection on the methods activity ]"</p>
+        <div class="reflection-author">— Kezia Lorein Villegas</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXAM -->
+<section class="band">
+  <div class="section-inner">
+    <div class="section-label">Midterm Exam</div>
+    <h2 class="section-title">Midterm Exam</h2>
+    <p class="section-desc">Exam answers, code outputs, and a reflection on my overall midterm performance.</p>
+
+    <div class="cards-grid">
+      <div class="card" style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1);">
+        <div class="card-icon" style="background: rgba(245,200,66,0.15);">📝</div>
+        <h3 style="color: #fff;">Written Portion</h3>
+        <p style="color: rgba(255,255,255,0.55);">[ Describe the written exam questions and your answers here ]</p>
+        <div style="margin-top: 1rem;" class="placeholder-img" style="min-height: 100px;">
+          <div class="icon">🖼</div>
+          <div style="font-size: 0.78rem;">Add exam screenshot / document</div>
+        </div>
+      </div>
+      <div class="card" style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1);">
+        <div class="card-icon" style="background: rgba(245,200,66,0.15);">💻</div>
+        <h3 style="color: #fff;">Practical / Coding Portion</h3>
+        <p style="color: rgba(255,255,255,0.55);">[ Describe the coding exam and paste or screenshot your solution ]</p>
+        <div style="margin-top: 1rem;" class="placeholder-img" style="min-height: 100px;">
+          <div class="icon">🖼</div>
+          <div style="font-size: 0.78rem;">Add your code screenshot</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 2rem; background: rgba(255,255,255,0.06); border-radius: 16px; padding: 2rem; border-left: 4px solid var(--yellow);">
+      <p style="color: rgba(255,255,255,0.5); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem;">Exam Reflection</p>
+      <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.75; font-style: italic;">
+        "[ Write your honest reflection here. What went well? What was challenging? What would you do differently? How has your understanding of OOP grown since the start of the semester? ]"
+      </p>
+      <div style="margin-top: 1rem; font-size: 0.82rem; font-weight: 600; color: var(--yellow);">— Kezia Lorein Villegas</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Designed & built by <strong>Kezia Lorein Villegas</strong> · OOP E-Portfolio · PUP · 2025</p>
+</footer>
+
+<script>
+function toggleAccordion(btn) {
+  const acc = btn.closest('.accordion');
+  acc.classList.toggle('open');
+}
+</script>
+</body>
+</html>
