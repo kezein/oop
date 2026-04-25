@@ -48,15 +48,35 @@ document.addEventListener("DOMContentLoaded", () => {
   ─────────────────────────────────────────────────────── */
   var activities = [
     {
-      label: "Activity 1",
+      label: "Assignment 1",
       title: "Variables",
       desc: "Introduction to Java variables — declaring and printing primitive data types: int, double, char, boolean, and String.",
       tags: ["Variables", "Data Types", "Java"],
       accent: "#c792ea", bg: "#1e1a2e",
-      filename: "Act1_Variables",
+      filename: "Assignment 1 ",
       code: '<img src="images/act1-1.png" style="width:100%;border-radius:6px;">' +
             '<img src="images/act1-2.png" style="width:100%;border-radius:6px;margin-top:0.5rem;">',
-      left: "calc(50% - 422px)", top: "140px", rot: "-4deg",   w: 260, z: 5
+    left: "calc(50% - 460px)", top: "150px", rot: "-4deg",   w: 260, z: 2
+    },
+    {
+      label: "About me",
+      title: "Introduction",
+      desc: "A brief introduction to the developer behind the code, second-year BSIT student <3",
+      tags: ["Interests", "About Me", "Intro"],
+      accent: "#95e595", bg: "#1c281c",
+      filename: "Hi, I'm Kez!",
+      code: '<img src="images/Aboutme.jpg" style="width:100%;border-radius:6px;">',
+     left: "calc(50% - 180px)", top: "100px", rot: "2deg",   w: 260, z: 1
+    },
+    {
+      label: "Activity 1",
+      title: "Code Analysis",
+      desc: "Analyzing syntax structures, variable behavior, and compilation processes to understand how basic logic is executed",
+      tags: ["Variables", "Data Types", "Java"],
+      accent: "#d867c3", bg: "#2e1a2b",
+      filename: "Act1_Variables",
+      code: '<img src="images/Codeana.png" style="width:100%;border-radius:6px;">',
+      left: "calc(50% + 100px)", top: "90px", rot: "-3deg",   w: 260, z: 3
     },
     {
       label: "Activity 2",
@@ -121,7 +141,8 @@ document.addEventListener("DOMContentLoaded", () => {
             '<img src="images/act2-1.png" style="width:100%;border-radius:6px;margin-top:1rem;">' +
             '<img src="images/act2-2.png" style="width:100%;border-radius:6px;margin-top:0.5rem;">' +
             '<img src="images/act2-3.png" style="width:100%;border-radius:6px;margin-top:0.5rem;">',
-      left: "calc(50% - 142px)", top: "60px",  rot: "2.5deg",  w: 255, z: 4
+      left: "calc(50% + 350px)", top: "160px",  rot: "5deg",  w: 255, z: 4
+    
     },
         {
       label: "Activity 3",
@@ -195,7 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
             '<img src="images/act3-7.png" style="width:100%;border-radius:6px;margin-top:1rem;">' +
             '<img src="images/act3-8.png" style="width:100%;border-radius:6px;margin-top:1rem;">' +
             '<img src="images/act3-9.png" style="width:100%;border-radius:6px;margin-top:1rem;">',
-      left: "calc(50% - 402px)", top: "400px", rot: "2deg",    w: 265, z: 1
+      left: "calc(50% - 380px)", top: "400px", rot: "3deg",    w: 265, z: 5
 
     },
     {
@@ -299,13 +320,13 @@ document.addEventListener("DOMContentLoaded", () => {
           '<img src="images/act4-3.png" style="width:100%;border-radius:6px;margin-top:0.5rem;">' +
           '<img src="images/act4-4.png" style="width:100%;border-radius:6px;margin-top:0.5rem;">' + 
           '<img src="images/act4-5.png" style="width:100%;border-radius:6px;margin-top:0.5rem;">',
-    left: "calc(50% - 82px)",  top: "370px", rot: "3deg",    w: 255, z: 2
+   left: "calc(50% - 100px)",  top: "420px", rot: "-2deg",    w: 255, z: 6
   },
     {
       label: "Activity 5",
       title: "Personal Expense Tracker",
       desc: "Full OOP capstone — Student class with encapsulated payment fields, methods for fee computation, receipt generation, and balance tracking.",
-      tags: ["Capstone", "OOP", "Encapsulation"],
+      tags: ["Methods", "OOP", "Encapsulation"],
       accent: "#f5c842", bg: "#1a1600",
       filename: "ExpenseTrackerVillegas.java",
       code: '<span class="cm">// Personal Expense Tracker — Kezia Lorein Villegas</span>\n' +
@@ -368,7 +389,7 @@ document.addEventListener("DOMContentLoaded", () => {
             '<img src="images/act5-3.png" style="width:100%;border-radius:6px;margin-top:0.5rem;">' +
             '<img src="images/act5-4.png" style="width:100%;border-radius:6px;margin-top:0.5rem;">' +
             '<img src="images/act5-5.png" style="width:100%;border-radius:6px;margin-top:0.5rem;">',
-      left: "calc(50% + 158px)", top: "130px", rot: "-3.5deg", w: 265, z: 3
+      left: "calc(50% + 200px)", top: "380px", rot: "4deg", w: 265, z: 7
     }
   ];
 
