@@ -1,0 +1,364 @@
+<!-- ═══════════════════════════════════════════════════════
+     ACTIVITIES SECTION v3 — replace your existing one
+     Paste the <section> into midterm.html
+     Paste the <style> into style.css
+     Paste the <script> block into script.js (at the bottom)
+     ═══════════════════════════════════════════════════════ -->
+
+<section style="padding:0;margin:0;background:#0e0e0e;">
+  <div id="archiveWrap" style="
+    background:#0e0e0e;
+    min-height:520px;
+    height:520px;
+    width:100%;
+    position:relative;
+    overflow:hidden;
+    box-sizing:border-box;
+  ">
+    <span style="position:absolute;top:1.5rem;left:2rem;font-family:'Syne',sans-serif;font-size:0.65rem;letter-spacing:0.15em;color:rgba(255,255,255,0.3);text-transform:uppercase;z-index:10;">Midterm · Activities</span>
+    <span style="position:absolute;top:2.6rem;left:2rem;font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:#fff;z-index:10;line-height:1.1;">Java Activities</span>
+    <span style="position:absolute;bottom:1.5rem;left:2rem;font-family:'Space Mono',monospace;font-size:0.62rem;color:rgba(255,255,255,0.2);letter-spacing:0.08em;z-index:10;">Click any card to expand →</span>
+    <div id="archiveNavDots" style="position:absolute;bottom:1.5rem;right:1.5rem;display:flex;gap:6px;z-index:10;"></div>
+  </div>
+</section>
+
+<!-- Lightbox overlay — lives outside the section so it can go truly fullscreen -->
+<div id="archiveLightbox" style="
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.92);
+  z-index:9999;
+  align-items:center;
+  justify-content:center;
+  padding:2rem;
+  box-sizing:border-box;
+">
+  <!-- Close button -->
+  <button id="archiveLbClose" style="
+    position:absolute;top:1.25rem;right:1.5rem;
+    background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);
+    border-radius:50%;width:36px;height:36px;cursor:pointer;
+    font-size:1rem;color:rgba(255,255,255,0.7);
+    display:flex;align-items:center;justify-content:center;
+    transition:background 0.2s;z-index:10001;
+  ">✕</button>
+
+  <!-- Code panel (left) -->
+  <div id="archiveLbCode" style="
+    flex:1;
+    max-width:calc(100% - 260px);
+    height:85vh;
+    border-radius:12px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    box-sizing:border-box;
+  ">
+    <!-- Mac-style titlebar -->
+    <div id="archiveLbBar" style="
+      padding:0.6rem 1rem;
+      display:flex;align-items:center;gap:6px;
+      border-bottom:1px solid rgba(255,255,255,0.06);
+      flex-shrink:0;
+    ">
+      <span style="width:12px;height:12px;border-radius:50%;background:#ff5f57;display:inline-block;"></span>
+      <span style="width:12px;height:12px;border-radius:50%;background:#febc2e;display:inline-block;"></span>
+      <span style="width:12px;height:12px;border-radius:50%;background:#28c840;display:inline-block;"></span>
+      <span id="archiveLbFilename" style="margin-left:0.75rem;font-family:'Space Mono',monospace;font-size:0.65rem;color:rgba(255,255,255,0.3);"></span>
+    </div>
+    <!-- Scrollable code -->
+    <div style="flex:1;overflow-y:auto;padding:1.5rem 1.75rem;">
+      <pre id="archiveLbPre" style="
+        font-family:'Space Mono',monospace;
+        font-size:0.78rem;
+        line-height:1.85;
+        color:rgba(255,255,255,0.82);
+        margin:0;white-space:pre-wrap;word-break:break-word;
+      "></pre>
+    </div>
+  </div>
+
+  <!-- Info panel (right) -->
+  <div id="archiveLbInfo" style="
+    width:220px;
+    flex-shrink:0;
+    margin-left:1.25rem;
+    border-radius:12px;
+    padding:1.25rem 1.3rem 1.1rem;
+    box-sizing:border-box;
+    align-self:center;
+  ">
+    <div id="archiveLbLabel" style="font-family:'Space Mono',monospace;font-size:0.55rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(0,0,0,0.4);margin-bottom:0.35rem;"></div>
+    <div id="archiveLbTitle" style="font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;color:#111;margin-bottom:0.6rem;line-height:1.25;"></div>
+    <div id="archiveLbDesc" style="font-family:'Space Mono',monospace;font-size:0.6rem;line-height:1.75;color:rgba(0,0,0,0.62);margin-bottom:0.85rem;"></div>
+    <div id="archiveLbTags"></div>
+
+    <!-- Nav arrows -->
+    <div style="display:flex;gap:8px;margin-top:1.25rem;">
+      <button id="archiveLbPrev" style="flex:1;padding:0.5rem;background:rgba(0,0,0,0.12);border:none;border-radius:8px;cursor:pointer;font-family:'Space Mono',monospace;font-size:0.6rem;color:rgba(0,0,0,0.55);transition:background 0.2s;">← Prev</button>
+      <button id="archiveLbNext" style="flex:1;padding:0.5rem;background:rgba(0,0,0,0.12);border:none;border-radius:8px;cursor:pointer;font-family:'Space Mono',monospace;font-size:0.6rem;color:rgba(0,0,0,0.55);transition:background 0.2s;">Next →</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.archive-doc {
+  position: absolute !important;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(.23,1,.32,1), box-shadow 0.3s;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 4px 6px 24px rgba(0,0,0,0.55);
+  box-sizing: border-box;
+}
+.archive-doc:hover {
+  box-shadow: 6px 10px 36px rgba(0,0,0,0.8);
+  filter: brightness(1.12);
+  transform: scale(1.04) !important;
+}
+.arc-doc-inner {
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.arc-header {
+  padding: 0.45rem 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.03);
+}
+.arc-dot-circle { width:7px; height:7px; border-radius:50%; display:inline-block; }
+.arc-screen-preview {
+  padding: 0.65rem 0.75rem;
+  font-family: 'Space Mono', monospace !important;
+  font-size: 0.46rem !important;
+  line-height: 1.7 !important;
+  color: rgba(255,255,255,0.7);
+  white-space: pre;
+  display: block;
+  max-height: 120px;
+  overflow: hidden;
+}
+.arc-screen-preview .kw  { color: #c792ea; }
+.arc-screen-preview .cls { color: #82aaff; }
+.arc-screen-preview .str { color: #c3e88d; }
+.arc-screen-preview .cm  { color: rgba(255,255,255,0.28); }
+.arc-screen-preview .num { color: #f78c6c; }
+.arc-screen-preview .fn  { color: #89ddff; }
+.arc-expand-hint {
+  padding: 0.3rem 0.75rem 0.45rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.42rem;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.06em;
+}
+.arc-badge {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.48rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  margin: 0 0.75rem 0.5rem;
+  font-family: 'Space Mono', monospace;
+}
+.arc-nav-dot {
+  width:7px; height:7px; border-radius:50%;
+  background:rgba(255,255,255,0.18);
+  border:none; cursor:pointer; padding:0;
+  transition:background 0.2s;
+}
+.arc-nav-dot.arc-dot-active { background:#f5c842; }
+.arc-tag {
+  display: inline-block;
+  background: rgba(0,0,0,0.12);
+  color: rgba(0,0,0,0.6);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-right: 4px;
+  margin-bottom: 4px;
+}
+/* Lightbox code syntax inside pre */
+#archiveLbPre .kw  { color: #c792ea; }
+#archiveLbPre .cls { color: #82aaff; }
+#archiveLbPre .str { color: #c3e88d; }
+#archiveLbPre .cm  { color: rgba(255,255,255,0.3); }
+#archiveLbPre .num { color: #f78c6c; }
+#archiveLbPre .fn  { color: #89ddff; }
+</style>
+
+<script>
+(function() {
+  /* ── Activity data ─────────────────────────────────────
+     Replace `code` with your FULL actual code for each activity.
+     Use the same span classes: kw, cls, str, cm, num, fn
+  ─────────────────────────────────────────────────────── */
+  var activities = [
+    {
+      label: "Activity 1",
+      title: "ATM Simulation",
+      desc: "Encapsulation in action — private balance field accessed only through deposit(), withdraw(), and checkBalance() methods. Conditional logic validates every transaction.",
+      tags: ["Encapsulation", "OOP", "Java"],
+      accent: "#c792ea", bg: "#1e1a2e",
+      filename: "ATM.java",
+      code: '<span class="cm">// ATM Simulation — Kezia Lorein Villegas</span>\n<span class="kw">public class</span> <span class="cls">ATM</span> {\n    <span class="kw">private double</span> balance;\n\n    <span class="kw">public</span> <span class="cls">ATM</span>(<span class="kw">double</span> initialBalance) {\n        <span class="kw">this</span>.balance = initialBalance;\n    }\n\n    <span class="kw">public void</span> <span class="fn">deposit</span>(<span class="kw">double</span> amount) {\n        <span class="kw">if</span> (amount > <span class="num">0</span>) {\n            balance += amount;\n            System.out.println(<span class="str">"Deposited: \u20b1"</span> + amount);\n        } <span class="kw">else</span> {\n            System.out.println(<span class="str">"Invalid deposit amount."</span>);\n        }\n    }\n\n    <span class="kw">public void</span> <span class="fn">withdraw</span>(<span class="kw">double</span> amount) {\n        <span class="kw">if</span> (amount <= <span class="num">0</span>) {\n            System.out.println(<span class="str">"Invalid amount."</span>);\n        } <span class="kw">else if</span> (amount <= balance) {\n            balance -= amount;\n            System.out.println(<span class="str">"Withdrawn: \u20b1"</span> + amount);\n        } <span class="kw">else</span> {\n            System.out.println(<span class="str">"Insufficient funds."</span>);\n        }\n    }\n\n    <span class="kw">public void</span> <span class="fn">checkBalance</span>() {\n        System.out.println(<span class="str">"Current Balance: \u20b1"</span> + balance);\n    }\n\n    <span class="kw">public static void</span> <span class="fn">main</span>(String[] args) {\n        <span class="cls">ATM</span> myAtm = <span class="kw">new</span> <span class="cls">ATM</span>(<span class="num">5000</span>);\n        myAtm.<span class="fn">checkBalance</span>();\n        myAtm.<span class="fn">deposit</span>(<span class="num">1500</span>);\n        myAtm.<span class="fn">withdraw</span>(<span class="num">2000</span>);\n        myAtm.<span class="fn">checkBalance</span>();\n    }\n}',
+      left:"8%", top:"130px", rot:"-4deg", w:185, z:5
+    },
+    {
+      label: "Activity 2",
+      title: "Decision Structures",
+      desc: "Explored if-else chains, switch statements, and nested conditionals to build a grade classifier and day-of-week program.",
+      tags: ["Control Flow", "Switch", "If-Else"],
+      accent: "#82aaff", bg: "#111827",
+      filename: "GradeCheck.java",
+      code: '<span class="cm">// Decision Structures — Kezia Lorein Villegas</span>\n<span class="kw">import</span> java.util.Scanner;\n\n<span class="kw">public class</span> <span class="cls">GradeCheck</span> {\n    <span class="kw">public static void</span> <span class="fn">main</span>(String[] args) {\n        Scanner sc = <span class="kw">new</span> Scanner(System.in);\n        System.out.print(<span class="str">"Enter your score: "</span>);\n        <span class="kw">int</span> score = sc.<span class="fn">nextInt</span>();\n\n        String grade;\n        <span class="kw">if</span> (score >= <span class="num">90</span>) {\n            grade = <span class="str">"A"</span>;\n        } <span class="kw">else if</span> (score >= <span class="num">80</span>) {\n            grade = <span class="str">"B"</span>;\n        } <span class="kw">else if</span> (score >= <span class="num">70</span>) {\n            grade = <span class="str">"C"</span>;\n        } <span class="kw">else if</span> (score >= <span class="num">60</span>) {\n            grade = <span class="str">"D"</span>;\n        } <span class="kw">else</span> {\n            grade = <span class="str">"F"</span>;\n        }\n        System.out.println(<span class="str">"Your grade is: "</span> + grade);\n\n        <span class="cm">// Switch: Day of the week</span>\n        System.out.print(<span class="str">"Enter day number (1-7): "</span>);\n        <span class="kw">int</span> day = sc.<span class="fn">nextInt</span>();\n        <span class="kw">switch</span> (day) {\n            <span class="kw">case</span> <span class="num">1</span>: System.out.println(<span class="str">"Monday"</span>); <span class="kw">break</span>;\n            <span class="kw">case</span> <span class="num">2</span>: System.out.println(<span class="str">"Tuesday"</span>); <span class="kw">break</span>;\n            <span class="kw">case</span> <span class="num">3</span>: System.out.println(<span class="str">"Wednesday"</span>); <span class="kw">break</span>;\n            <span class="kw">case</span> <span class="num">4</span>: System.out.println(<span class="str">"Thursday"</span>); <span class="kw">break</span>;\n            <span class="kw">case</span> <span class="num">5</span>: System.out.println(<span class="str">"Friday"</span>); <span class="kw">break</span>;\n            <span class="kw">case</span> <span class="num">6</span>: System.out.println(<span class="str">"Saturday"</span>); <span class="kw">break</span>;\n            <span class="kw">case</span> <span class="num">7</span>: System.out.println(<span class="str">"Sunday"</span>); <span class="kw">break</span>;\n            <span class="kw">default</span>: System.out.println(<span class="str">"Invalid day."</span>);\n        }\n    }\n}',
+      left:"27%", top:"80px", rot:"2.5deg", w:180, z:4
+    },
+    {
+      label: "Activity 3",
+      title: "Methods in Java",
+      desc: "Defined static and instance methods, explored return types, parameters, and method overloading to build a basic calculator class.",
+      tags: ["Methods", "Overloading", "Return Types"],
+      accent: "#c3e88d", bg: "#121c0f",
+      filename: "Calc.java",
+      code: '<span class="cm">// Methods in Java — Kezia Lorein Villegas</span>\n<span class="kw">public class</span> <span class="cls">Calc</span> {\n\n    <span class="cm">// Overloaded add methods</span>\n    <span class="kw">static int</span> <span class="fn">add</span>(<span class="kw">int</span> a, <span class="kw">int</span> b) {\n        <span class="kw">return</span> a + b;\n    }\n\n    <span class="kw">static double</span> <span class="fn">add</span>(<span class="kw">double</span> a, <span class="kw">double</span> b) {\n        <span class="kw">return</span> a + b;\n    }\n\n    <span class="kw">static double</span> <span class="fn">subtract</span>(<span class="kw">double</span> a, <span class="kw">double</span> b) {\n        <span class="kw">return</span> a - b;\n    }\n\n    <span class="kw">static double</span> <span class="fn">multiply</span>(<span class="kw">double</span> a, <span class="kw">double</span> b) {\n        <span class="kw">return</span> a * b;\n    }\n\n    <span class="kw">static double</span> <span class="fn">divide</span>(<span class="kw">double</span> a, <span class="kw">double</span> b) {\n        <span class="kw">if</span> (b == <span class="num">0</span>) {\n            System.out.println(<span class="str">"Cannot divide by zero."</span>);\n            <span class="kw">return</span> <span class="num">0</span>;\n        }\n        <span class="kw">return</span> a / b;\n    }\n\n    <span class="kw">public static void</span> <span class="fn">main</span>(String[] args) {\n        System.out.println(<span class="str">"Add (int): "</span>    + <span class="fn">add</span>(<span class="num">2</span>, <span class="num">3</span>));\n        System.out.println(<span class="str">"Add (double): "</span> + <span class="fn">add</span>(<span class="num">2.5</span>, <span class="num">1.1</span>));\n        System.out.println(<span class="str">"Subtract: "</span>     + <span class="fn">subtract</span>(<span class="num">10</span>, <span class="num">4</span>));\n        System.out.println(<span class="str">"Multiply: "</span>     + <span class="fn">multiply</span>(<span class="num">3</span>, <span class="num">5</span>));\n        System.out.println(<span class="str">"Divide: "</span>       + <span class="fn">divide</span>(<span class="num">10</span>, <span class="num">2</span>));\n    }\n}',
+      left:"47%", top:"110px", rot:"-2deg", w:185, z:3
+    },
+    {
+      label: "Activity 4",
+      title: "Inheritance",
+      desc: "Built a class hierarchy — Animal → Dog → GuideDog — demonstrating multilevel inheritance, method overriding, and the super keyword.",
+      tags: ["Inheritance", "super", "Override"],
+      accent: "#f78c6c", bg: "#1e1008",
+      filename: "Inheritance.java",
+      code: '<span class="cm">// Inheritance — Kezia Lorein Villegas</span>\n<span class="kw">class</span> <span class="cls">Animal</span> {\n    String name;\n\n    <span class="cls">Animal</span>(String name) {\n        <span class="kw">this</span>.name = name;\n    }\n\n    <span class="kw">void</span> <span class="fn">speak</span>() {\n        System.out.println(name + <span class="str">" makes a sound."</span>);\n    }\n}\n\n<span class="kw">class</span> <span class="cls">Dog</span> <span class="kw">extends</span> <span class="cls">Animal</span> {\n    <span class="cls">Dog</span>(String name) {\n        <span class="kw">super</span>(name);\n    }\n\n    <span class="kw">void</span> <span class="fn">speak</span>() {\n        System.out.println(name + <span class="str">" says: Woof!"</span>);\n    }\n}\n\n<span class="kw">class</span> <span class="cls">GuideDog</span> <span class="kw">extends</span> <span class="cls">Dog</span> {\n    <span class="cls">GuideDog</span>(String name) {\n        <span class="kw">super</span>(name);\n    }\n\n    <span class="kw">void</span> <span class="fn">guide</span>() {\n        <span class="kw">super</span>.<span class="fn">speak</span>();\n        System.out.println(name + <span class="str">" is guiding its owner."</span>);\n    }\n}\n\n<span class="kw">public class</span> <span class="cls">InheritanceDemo</span> {\n    <span class="kw">public static void</span> <span class="fn">main</span>(String[] args) {\n        <span class="cls">Animal</span> a = <span class="kw">new</span> <span class="cls">Animal</span>(<span class="str">"Cat"</span>);\n        <span class="cls">Dog</span>    d = <span class="kw">new</span> <span class="cls">Dog</span>(<span class="str">"Buddy"</span>);\n        <span class="cls">GuideDog</span> g = <span class="kw">new</span> <span class="cls">GuideDog</span>(<span class="str">"Max"</span>);\n\n        a.<span class="fn">speak</span>();\n        d.<span class="fn">speak</span>();\n        g.<span class="fn">guide</span>();\n    }\n}',
+      left:"15%", top:"295px", rot:"3deg", w:180, z:2
+    },
+    {
+      label: "Activity 5",
+      title: "Student Payment System",
+      desc: "Full OOP capstone — Student class with encapsulated payment fields, methods for fee computation, receipt generation, and balance tracking.",
+      tags: ["Capstone", "OOP", "Encapsulation"],
+      accent: "#f5c842", bg: "#1a1600",
+      filename: "StudentPayment.java",
+      code: '<span class="cm">// Student Payment System — Kezia Lorein Villegas</span>\n<span class="kw">public class</span> <span class="cls">Student</span> {\n    <span class="kw">private</span> String name;\n    <span class="kw">private</span> String studentId;\n    <span class="kw">private double</span> totalFee;\n    <span class="kw">private double</span> amountPaid;\n\n    <span class="kw">public</span> <span class="cls">Student</span>(String name, String studentId, <span class="kw">double</span> totalFee) {\n        <span class="kw">this</span>.name      = name;\n        <span class="kw">this</span>.studentId = studentId;\n        <span class="kw">this</span>.totalFee  = totalFee;\n        <span class="kw">this</span>.amountPaid = <span class="num">0</span>;\n    }\n\n    <span class="kw">public void</span> <span class="fn">payFee</span>(<span class="kw">double</span> amount) {\n        <span class="kw">if</span> (amount <= <span class="num">0</span>) {\n            System.out.println(<span class="str">"Invalid payment amount."</span>);\n            <span class="kw">return</span>;\n        }\n        amountPaid += amount;\n        System.out.println(<span class="str">"Payment received: \u20b1"</span> + amount);\n    }\n\n    <span class="kw">public double</span> <span class="fn">getRemainingBalance</span>() {\n        <span class="kw">return</span> totalFee - amountPaid;\n    }\n\n    <span class="kw">public void</span> <span class="fn">printReceipt</span>() {\n        System.out.println(<span class="str">"=============================="</span>);\n        System.out.println(<span class="str">"  STUDENT PAYMENT RECEIPT"</span>);\n        System.out.println(<span class="str">"=============================="</span>);\n        System.out.println(<span class="str">"Name      : "</span> + name);\n        System.out.println(<span class="str">"Student ID: "</span> + studentId);\n        System.out.println(<span class="str">"Total Fee : \u20b1"</span> + totalFee);\n        System.out.println(<span class="str">"Paid      : \u20b1"</span> + amountPaid);\n        System.out.println(<span class="str">"Balance   : \u20b1"</span> + <span class="fn">getRemainingBalance</span>());\n        System.out.println(<span class="str">"=============================="</span>);\n    }\n\n    <span class="kw">public static void</span> <span class="fn">main</span>(String[] args) {\n        <span class="cls">Student</span> s = <span class="kw">new</span> <span class="cls">Student</span>(<span class="str">"Kezia Lorein Villegas"</span>, <span class="str">"2023-00123"</span>, <span class="num">15000</span>);\n        s.<span class="fn">payFee</span>(<span class="num">5000</span>);\n        s.<span class="fn">payFee</span>(<span class="num">3000</span>);\n        s.<span class="fn">printReceipt</span>();\n    }\n}',
+      left:"38%", top:"295px", rot:"-3.5deg", w:190, z:1
+    }
+  ];
+
+  var wrap     = document.getElementById('archiveWrap');
+  var lb       = document.getElementById('archiveLightbox');
+  var lbCode   = document.getElementById('archiveLbCode');
+  var lbBar    = document.getElementById('archiveLbBar');
+  var lbPre    = document.getElementById('archiveLbPre');
+  var lbInfo   = document.getElementById('archiveLbInfo');
+  var lbLabel  = document.getElementById('archiveLbLabel');
+  var lbTitle  = document.getElementById('archiveLbTitle');
+  var lbDesc   = document.getElementById('archiveLbDesc');
+  var lbTags   = document.getElementById('archiveLbTags');
+  var lbFile   = document.getElementById('archiveLbFilename');
+  var lbClose  = document.getElementById('archiveLbClose');
+  var lbPrev   = document.getElementById('archiveLbPrev');
+  var lbNext   = document.getElementById('archiveLbNext');
+  var dotsWrap = document.getElementById('archiveNavDots');
+
+  if (!wrap || !lb) return;
+
+  var currentIdx = 0;
+  var docEls = [];
+
+  /* Build scattered cards */
+  activities.forEach(function(act, i) {
+    var doc = document.createElement('div');
+    doc.className = 'archive-doc';
+    doc.style.left      = act.left;
+    doc.style.top       = act.top;
+    doc.style.width     = act.w + 'px';
+    doc.style.zIndex    = act.z;
+    doc.style.transform = 'rotate(' + act.rot + ')';
+
+    doc.innerHTML =
+      '<div class="arc-doc-inner" style="background:' + act.bg + '">' +
+        '<div class="arc-header">' +
+          '<span class="arc-dot-circle" style="background:#ff5f57"></span>' +
+          '<span class="arc-dot-circle" style="background:#febc2e"></span>' +
+          '<span class="arc-dot-circle" style="background:#28c840"></span>' +
+          '<span style="font-size:0.46rem;color:rgba(255,255,255,0.25);margin-left:6px;font-family:Space Mono,monospace">' + act.filename + '</span>' +
+        '</div>' +
+        '<span class="arc-screen-preview">' + act.code + '</span>' +
+        '<div class="arc-expand-hint">click to expand ↗</div>' +
+        '<span class="arc-badge" style="background:' + act.accent + '22;color:' + act.accent + '">' + act.label + '</span>' +
+      '</div>';
+
+    doc.addEventListener('click', function(e) {
+      e.stopPropagation();
+      openLightbox(i);
+    });
+
+    wrap.appendChild(doc);
+    docEls.push(doc);
+
+    var dot = document.createElement('button');
+    dot.className = 'arc-nav-dot';
+    dot.addEventListener('click', function(e) { e.stopPropagation(); openLightbox(i); });
+    dotsWrap.appendChild(dot);
+  });
+
+  function openLightbox(i) {
+    currentIdx = i;
+    var act = activities[i];
+
+    lbCode.style.background  = act.bg;
+    lbBar.style.background   = 'rgba(255,255,255,0.04)';
+    lbFile.textContent        = act.filename;
+    lbPre.innerHTML           = act.code;
+    lbInfo.style.background   = act.accent;
+    lbLabel.textContent       = act.label;
+    lbTitle.textContent       = act.title;
+    lbDesc.textContent        = act.desc;
+    lbTags.innerHTML          = act.tags.map(function(t) {
+      return '<span class="arc-tag">' + t + '</span>';
+    }).join('');
+
+    lb.style.display        = 'flex';
+    document.body.style.overflow = 'hidden';
+
+    dotsWrap.querySelectorAll('.arc-nav-dot').forEach(function(d, idx) {
+      d.classList.toggle('arc-dot-active', idx === i);
+    });
+  }
+
+  function closeLightbox() {
+    lb.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  lbClose.addEventListener('click', closeLightbox);
+  lb.addEventListener('click', function(e) {
+    if (e.target === lb) closeLightbox();
+  });
+
+  lbPrev.addEventListener('click', function() {
+    openLightbox((currentIdx - 1 + activities.length) % activities.length);
+  });
+  lbNext.addEventListener('click', function() {
+    openLightbox((currentIdx + 1) % activities.length);
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (lb.style.display === 'none') return;
+    if (e.key === 'Escape')     closeLightbox();
+    if (e.key === 'ArrowRight') openLightbox((currentIdx + 1) % activities.length);
+    if (e.key === 'ArrowLeft')  openLightbox((currentIdx - 1 + activities.length) % activities.length);
+  });
+})();
+</script>
