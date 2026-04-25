@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
             '<img src="images/act2-1.png" style="width:100%;border-radius:6px;margin-top:1rem;">' +
             '<img src="images/act2-2.png" style="width:100%;border-radius:6px;margin-top:0.5rem;">' +
             '<img src="images/act2-3.png" style="width:100%;border-radius:6px;margin-top:0.5rem;">',
-      left: "calc(50% + 350px)", top: "160px",  rot: "5deg",  w: 255, z: 4
+      left: "calc(50% + 330px)", top: "160px",  rot: "5deg",  w: 255, z: 4
     
     },
         {
