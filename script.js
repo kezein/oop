@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
       desc: "Introduction to Java variables — declaring and printing primitive data types: int, double, char, boolean, and String.",
       tags: ["Variables", "Data Types", "Java"],
       accent: "#c792ea", bg: "#1e1a2e",
-      filename: "Act1_Variables.java",
+      filename: "Act1_Variables",
       code: '<img src="images/act1-1.png" style="width:100%;border-radius:6px;">' +
             '<img src="images/act1-2.png" style="width:100%;border-radius:6px;margin-top:0.5rem;">',
       left: "calc(50% - 422px)", top: "140px", rot: "-4deg",   w: 260, z: 5
