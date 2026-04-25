@@ -23,10 +23,17 @@
 </nav>
 
 <header 
-  class="h-[60vh] bg-cover bg-center bg-no-repeat flex items-center justify-center" 
-  style="background-image: url('images/bg.png');">
+  class="relative h-[60vh] flex items-center justify-center overflow-hidden" 
+  style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), linear-gradient(90deg, #9333ea 0%, #facc15 100%);">
   
-  <h1 class="text-white text-4xl font-bold tracking-wide">Welcome to my OOP Portfolio</h1>
+  <div class="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] border-[1px] border-white/10 rounded-full opacity-60"></div>
+  <div class="absolute right-20 top-1/2 -translate-y-1/2 w-[400px] h-[400px] border-[1px] border-white/10 rounded-full bg-white/5 opacity-60"></div>
+
+  <h1 class="relative z-20 text-white text-5xl font-extrabold tracking-tight text-center px-4">
+    Welcome to my OOP Portfolio
+  </h1>
+
+  <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent z-10 pointer-events-none"></div>
 
 </header>
 
@@ -46,8 +53,8 @@
       Villegas<span class="yellow">.</span>
     </h1>
     <p class="hero-sub fadeIntersect">
-      A full-stack thinker and creative problem solver. This e-portfolio presents my journey through
-      Object-Oriented Programming in Java — from quizzes and activities to exams and reflections.
+      This e-portfolio presents my Midterm Project in Object-Oriented Programming using Github. It 
+      includes quizzes, activities, and exams that demonstrate my understanding of OOP concepts. 
     </p>
    
     <div class="hero-actions">
@@ -69,11 +76,12 @@
         <h2 class="section-title">Tech-driven.<br/>Creatively grounded.</h2>
         <p style="font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 1.25rem; font-weight: 300; ">
           I'm a BS Information Technology student at the Polytechnic University of the Philippines.
-          This e-portfolio documents my learning in Object-Oriented Programming — building real
-          Java programs, applying OOP principles, and growing as a developer one project at a time.
+          This e-portfolio documents my learning in Object-Oriented Programming, building
+          Java programs, applying OOP principles, and growing as a developer one project (or in this case, one seatwork)
+           at a time.
         </p>
         <p style="font-size: 0.95rem; color: var(--muted); line-height: 1.8; font-weight: 300;">
-          Outside of code, I serve as a ministry leader, sign language interpreter, and musician —
+          Outside of code, I serve in church as a daughter of God, sign language interpreter, and (kinda) musician —
           always looking for ways where faith, creativity, and technology intersect.
         </p>
           </div>
@@ -86,7 +94,7 @@
       </div>
       <div>
             <div class="placeholder-img" style="min-height: 280px;">
-      <img src="images/profile.jfif" alt="Your Name" style="width: 100%; height: 100%; object-fit: cover;" />
+      <img src="images/profile.jpg" alt="Your Name" style="width: 100%; height: 100%; object-fit: cover;" />
     </div>
       </div>
     </div>
@@ -119,7 +127,7 @@
       <div class="card fadeIntersect" style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1);">
         <div class="card-icon" style="background: rgba(245,200,66,0.15);">📋</div>
         <h3 style="color: #fff;">Section</h3>
-        <p style="color: rgba(255,255,255,0.55);">[ Your section here ] · A.Y. 2024–2025</p>
+        <p style="color: rgba(255,255,255,0.55);">BSIT 2-4 · S.Y. 2024–2025</p>
       </div>
     </div>
   </div>
